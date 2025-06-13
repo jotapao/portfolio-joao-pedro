@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>João Pedro - Desenvolvedor & CEO da JOTTADEV</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Swiper.js for Carousels -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <!-- Font Awesome (for icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0a192f; /* Deep Navy Blue */
+            color: #ccd6f6; /* Light Slate */
+        }
+        .jottadev-green { color: #10B981; }
+        .bg-jottadev-green { background-color: #10B981; }
+        .border-jottadev-green { border-color: #10B981; }
+        .jottadev-green-glow {
+            text-shadow: 0 0 8px rgba(16, 185, 129, 0.7);
+        }
+        .jottadev-green-shadow {
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
+        }
+
+        /* Header Style */
+        #header {
+            background-color: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Section Title Style */
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: #10B981;
+            margin: 8px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Typing Effect Cursor */
+        .typing-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.2em; /* Adjusted height */
+            background-color: #10B981;
+            margin-left: 5px;
+            animation: blink 0.7s infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        /* Carousel Navigation - Removed */
+        .swiper-pagination-bullet-active {
+            background: #10B981 !important;
+        }
+
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s, transform 0.8s;
+            transition-timing-function: ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="w-full">
+
+    <!-- Header -->
+    <header id="header" class="fixed w-full top-0 z-50 transition-all duration-300 shadow-lg">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="flex items-center gap-3">
+                <!-- JOTTADEV Final Logo -->
+                <svg width="35" height="35" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 10 L90 50 L50 90 L10 50 Z" stroke="#10B981" stroke-width="10" fill="none" stroke-linejoin="round"/>
+                    <path d="M40 35 L60 50 L40 65" stroke="#ccd6f6" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                 <div>
+                    <span class="font-bold text-xl text-gray-100 tracking-wider">JOTTADEV</span>
+                    <p class="text-xs jottadev-green -mt-1 tracking-widest">SOLUÇÕES DIGITAIS</p>
+                </div>
+            </a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#about" class="text-gray-300 hover:jottadev-green transition">Quem Sou</a>
+                <a href="#services" class="text-gray-300 hover:jottadev-green transition">Serviços</a>
+                <a href="#portfolio" class="text-gray-300 hover:jottadev-green transition">Portfólio</a>
+                <a href="#contact" class="bg-transparent border-2 border-jottadev-green text-jottadev-green px-5 py-2 rounded-md hover:bg-jottadev-green/10 transition duration-300">Contato</a>
+            </div>
+            <button id="mobile-menu-btn" class="md:hidden text-2xl jottadev-green"><i class="fas fa-bars"></i></button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800/90">
+            <a href="#about" class="block py-3 px-6 text-sm text-gray-300 hover:bg-jottadev-green/20">Quem Sou</a>
+            <a href="#services" class="block py-3 px-6 text-sm text-gray-300 hover:bg-jottadev-green/20">Serviços</a>
+            <a href="#portfolio" class="block py-3 px-6 text-sm text-gray-300 hover:bg-jottadev-green/20">Portfólio</a>
+            <a href="#contact" class="block py-3 px-6 text-sm text-gray-300 hover:bg-jottadev-green/20">Contato</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- I - Home Section -->
+        <section id="home" class="min-h-screen flex items-center pt-24 md:pt-0 bg-cover bg-center" style="background-image: linear-gradient(rgba(10, 25, 47, 0.95), rgba(10, 25, 47, 0.95)), url('https://www.transparenttextures.com/patterns/cubes.png');">
+            <div class="container mx-auto px-6 flex flex-col-reverse md:flex-row items-center gap-12">
+                <div class="md:w-3/5 text-center md:text-left">
+                    <p class="text-lg jottadev-green font-semibold mb-2">Olá, meu nome é</p>
+                    <h1 class="text-5xl md:text-7xl font-extrabold text-gray-100 leading-tight">João Pedro.</h1>
+                    <h2 class="text-3xl md:text-5xl font-bold text-gray-400 mt-2">
+                        Desenvolvedor Full-Stack & CEO
+                    </h2>
+                    <p id="home-description-typing" class="mt-6 text-gray-400 max-w-xl min-h-[120px]">
+                        <span class="typing-text"></span><span class="typing-cursor"></span>
+                    </p>
+                    <a href="#portfolio" class="mt-10 inline-block bg-jottadev-green text-white font-bold px-10 py-4 rounded-md text-lg hover:bg-emerald-600 transition duration-300 shadow-lg jottadev-green-shadow">
+                        Conheça meus projetos
+                    </a>
+                </div>
+                <div class="md:w-2/5 flex justify-center">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-jottadev-green rounded-full blur-2xl opacity-30"></div>
+                        <img src="https://placehold.co/500x500/0a192f/10B981?text=JP" alt="Foto de perfil de João Pedro" class="relative rounded-full shadow-2xl mx-auto border-4 border-jottadev-green/50 w-64 h-64 md:w-80 md:h-80 object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- II - About Section -->
+        <section id="about" class="py-24">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title text-center text-3xl font-bold text-gray-100 mb-16 reveal">Quem Sou</h2>
+                <div class="flex flex-col md:flex-row items-center gap-12 reveal">
+                    <div class="md:w-3/5">
+                        <p class="text-gray-400 mb-4">
+                            Com mais de 10 anos de experiência no mercado de tecnologia, minha jornada é marcada pela paixão em resolver problemas complexos com código limpo e eficiente. Formado em Engenharia de Software e com especialização em Arquitetura de Sistemas, fundei a JOTTADEV para oferecer soluções que não apenas atendem, mas superam as expectativas dos clientes.
+                        </p>
+                        <p class="text-gray-400 mb-6">Minhas principais competências incluem:</p>
+                        <ul class="grid grid-cols-2 gap-x-6 gap-y-2 text-gray-300">
+                           <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right jottadev-green"></i>React & Next.js</li>
+                           <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right jottadev-green"></i>Node.js & TypeScript</li>
+                           <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right jottadev-green"></i>Arquitetura de Software</li>
+                           <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right jottadev-green"></i>Banco de Dados SQL & NoSQL</li>
+                           <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right jottadev-green"></i>UI/UX Design</li>
+                           <li class="flex items-center gap-2"><i class="fa-solid fa-caret-right jottadev-green"></i>DevOps & Cloud</li>
+                        </ul>
+                    </div>
+                    <div class="md:w-2/5 flex justify-center mt-8 md:mt-0">
+                         <div class="relative w-full max-w-xs group">
+                             <div class="absolute -inset-0.5 bg-gradient-to-r from-emerald-500 to-sky-500 rounded-lg blur opacity-50 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                             <img src="https://placehold.co/500x600/1e293b/FFFFFF?text=JOTTADEV" alt="Imagem profissional de João Pedro" class="relative rounded-lg shadow-xl w-full">
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- III - Services Section -->
+        <section id="services" class="py-24 bg-gray-900/40">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="section-title text-3xl font-bold text-gray-100 mb-16 reveal">Serviços Sob Medida</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="bg-[#112240] p-8 rounded-lg border border-gray-700 hover:border-jottadev-green hover:-translate-y-2 transition-all duration-300 reveal">
+                        <i class="fas fa-code text-4xl jottadev-green mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2 text-gray-100">Sites e Landing Pages</h3>
+                        <p class="text-gray-400">Criação de sites institucionais, blogs e landing pages com design moderno, responsivo e focado em conversão.</p>
+                    </div>
+                    <div class="bg-[#112240] p-8 rounded-lg border border-gray-700 hover:border-jottadev-green hover:-translate-y-2 transition-all duration-300 reveal" style="transition-delay: 150ms;">
+                        <i class="fas fa-shopping-cart text-4xl jottadev-green mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2 text-gray-100">Lojas Virtuais</h3>
+                        <p class="text-gray-400">Desenvolvimento de e-commerces robustos e seguros, com integrações de pagamento e otimizados para vendas.</p>
+                    </div>
+                    <div class="bg-[#112240] p-8 rounded-lg border border-gray-700 hover:border-jottadev-green hover:-translate-y-2 transition-all duration-300 reveal" style="transition-delay: 300ms;">
+                        <i class="fas fa-sitemap text-4xl jottadev-green mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2 text-gray-100">Sistemas Web</h3>
+                        <p class="text-gray-400">Análise e desenvolvimento de sistemas sob medida para automatizar processos e otimizar a gestão do seu negócio.</p>
+                    </div>
+                    <div class="bg-[#112240] p-8 rounded-lg border border-gray-700 hover:border-jottadev-green hover:-translate-y-2 transition-all duration-300 reveal" style="transition-delay: 450ms;">
+                        <i class="fas fa-bullhorn text-4xl jottadev-green mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2 text-gray-100">Marketing Digital</h3>
+                        <p class="text-gray-400">Planejamento e execução de campanhas de tráfego pago (Google & Meta Ads) para alavancar sua marca online.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- IV - Portfolio Section -->
+        <section id="portfolio" class="py-24">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title text-3xl font-bold text-center text-gray-100 mb-16 reveal">Projetos Recentes</h2>
+                <div class="swiper reveal" id="portfolio-swiper">
+                    <div class="swiper-wrapper">
+                        <!-- Slides -->
+                        <div class="swiper-slide group"><div class="bg-[#112240] rounded-lg shadow-lg overflow-hidden"><img src="https://placehold.co/600x400/0f172a/10B981?text=Projeto+Alpha" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" alt="Projeto Alpha"><div class="p-4"><p class="font-semibold text-gray-200">E-commerce de Moda</p><p class="text-sm jottadev-green">Web Design</p></div></div></div>
+                        <div class="swiper-slide group"><div class="bg-[#112240] rounded-lg shadow-lg overflow-hidden"><img src="https://placehold.co/600x400/0f172a/3B82F6?text=Projeto+Beta" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" alt="Projeto Beta"><div class="p-4"><p class="font-semibold text-gray-200">Site Institucional de Advocacia</p><p class="text-sm jottadev-green">Identidade Visual</p></div></div></div>
+                        <div class="swiper-slide group"><div class="bg-[#112240] rounded-lg shadow-lg overflow-hidden"><img src="https://placehold.co/600x400/0f172a/8B5CF6?text=Projeto+Gama" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" alt="Projeto Gama"><div class="p-4"><p class="font-semibold text-gray-200">Sistema de Gestão Escolar</p><p class="text-sm jottadev-green">Sistema Web</p></div></div></div>
+                        <div class="swiper-slide group"><div class="bg-[#112240] rounded-lg shadow-lg overflow-hidden"><img src="https://placehold.co/600x400/0f172a/F97316?text=Projeto+Delta" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" alt="Projeto Delta"><div class="p-4"><p class="font-semibold text-gray-200">Landing Page para Evento</p><p class="text-sm jottadev-green">Marketing Digital</p></div></div></div>
+                        <div class="swiper-slide group"><div class="bg-[#112240] rounded-lg shadow-lg overflow-hidden"><img src="https://placehold.co/600x400/0f172a/EC4899?text=Projeto+Epsilon" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" alt="Projeto Epsilon"><div class="p-4"><p class="font-semibold text-gray-200">Plataforma de Cursos Online</p><p class="text-sm jottadev-green">E-learning</p></div></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- V - Testimonials Section -->
+        <section id="testimonials" class="py-24 bg-gray-900/40">
+            <div class="container mx-auto px-6 reveal">
+                <h2 class="section-title text-3xl font-bold text-center text-gray-100 mb-16">O que meus Clientes Dizem</h2>
+                <div class="swiper" id="testimonials-swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><div class="bg-[#112240] p-8 rounded-lg text-center"><i class="fas fa-quote-left text-3xl jottadev-green mb-4"></i><p class="text-gray-400 italic">"O João transformou nosso site. O resultado foi além do esperado, com um design incrível e muito mais vendas!"</p><img src="https://placehold.co/80x80/3B82F6/FFFFFF?text=A" alt="Cliente Ana" class="w-16 h-16 rounded-full mx-auto mt-6 mb-2 border-2 border-jottadev-green/50"><p class="font-bold text-gray-200">Ana Silva</p><p class="text-sm jottadev-green">CEO, ModaStore</p></div></div>
+                        <div class="swiper-slide"><div class="bg-[#112240] p-8 rounded-lg text-center"><i class="fas fa-quote-left text-3xl jottadev-green mb-4"></i><p class="text-gray-400 italic">"Profissionalismo e competência definem a JOTTADEV. O sistema que desenvolveram otimizou toda a nossa operação."</p><img src="https://placehold.co/80x80/8B5CF6/FFFFFF?text=M" alt="Cliente Marcos" class="w-16 h-16 rounded-full mx-auto mt-6 mb-2 border-2 border-jottadev-green/50"><p class="font-bold text-gray-200">Marcos Lins</p><p class="text-sm jottadev-green">Diretor, Educar+</p></div></div>
+                        <div class="swiper-slide"><div class="bg-[#112240] p-8 rounded-lg text-center"><i class="fas fa-quote-left text-3xl jottadev-green mb-4"></i><p class="text-gray-400 italic">"Desde o primeiro contato até a entrega final, a comunicação foi excelente e o projeto foi entregue no prazo."</p><img src="https://placehold.co/80x80/F97316/FFFFFF?text=C" alt="Cliente Carla" class="w-16 h-16 rounded-full mx-auto mt-6 mb-2 border-2 border-jottadev-green/50"><p class="font-bold text-gray-200">Carla Faria</p><p class="text-sm jottadev-green">Advogada, Faria & Associados</p></div></div>
+                    </div>
+                     <div class="swiper-pagination mt-8 relative"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VI - Lead Capture Section -->
+        <section id="lead-capture" class="py-24 text-center">
+            <div class="container mx-auto px-6 reveal">
+                <h2 class="text-4xl font-bold text-gray-100">Vamos Construir Algo Incrível Juntos?</h2>
+                <p class="mt-4 mb-8 max-w-2xl mx-auto text-gray-400">Estou sempre em busca de novos desafios. Se você tem uma ideia, um projeto ou precisa de uma solução digital, entre em contato. Vamos tomar um café e conversar!</p>
+                <a href="#contact" class="bg-jottadev-green text-white font-bold px-10 py-4 rounded-md text-lg hover:bg-emerald-600 transition duration-300 shadow-lg jottadev-green-shadow">
+                    Me Envie uma Mensagem
+                </a>
+            </div>
+        </section>
+        
+        <!-- VII & VIII - Contact & Location Merged Section -->
+        <section id="contact" class="py-24 bg-gray-900/40">
+            <div class="container mx-auto px-6 reveal">
+                <h2 class="section-title text-3xl font-bold text-center text-gray-100 mb-16">Contato</h2>
+                <div class="bg-[#112240] rounded-lg shadow-xl grid md:grid-cols-2">
+                    <div class="p-8 md:p-12">
+                        <h3 class="text-2xl font-bold text-gray-100 mb-4">Fale Comigo</h3>
+                        <form class="space-y-4">
+                            <input type="text" placeholder="Nome Completo" class="w-full p-3 bg-gray-800 rounded-md border border-gray-700 focus:outline-none focus:ring-2 focus:ring-jottadev-green">
+                            <input type="email" placeholder="E-mail" class="w-full p-3 bg-gray-800 rounded-md border border-gray-700 focus:outline-none focus:ring-2 focus:ring-jottadev-green">
+                            <textarea placeholder="Sua Mensagem" rows="5" class="w-full p-3 bg-gray-800 rounded-md border border-gray-700 focus:outline-none focus:ring-2 focus:ring-jottadev-green"></textarea>
+                            <button type="submit" class="w-full bg-jottadev-green text-white font-bold py-3 rounded-md hover:bg-emerald-600 transition">Enviar Mensagem</button>
+                        </form>
+                    </div>
+                    <div class="rounded-b-lg md:rounded-r-lg md:rounded-b-none overflow-hidden min-h-[400px]">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d122140.22228892482!2d-49.35824962283057!3d-16.69599542630507!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935ef6bd58d80867%3A0x4a43a2c53a06703c!2sGoiania%2C%20Goi%C3%A1s!5e0!3m2!1spt-BR!2sbr!4v1718228318288!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0; filter: grayscale(1) invert(1) contrast(0.8);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- IX - Footer -->
+    <footer class="bg-[#020c1b] text-gray-400 py-8">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="#" target="_blank" class="text-2xl hover:text-jottadev-green hover:-translate-y-1 transition-all"><i class="fab fa-linkedin"></i></a>
+                <a href="#" target="_blank" class="text-2xl hover:text-jottadev-green hover:-translate-y-1 transition-all"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank" class="text-2xl hover:text-jottadev-green hover:-translate-y-1 transition-all"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/5562999999999" target="_blank" class="text-2xl hover:text-jottadev-green hover:-translate-y-1 transition-all"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <p class="text-sm">&copy; 2024 JOTTADEV Soluções Digitais. </p>
+            <p class="text-xs">Criado com <i class="fas fa-heart text-red-500"></i> por João Pedro.</p>
+        </div>
+    </footer>
+
+    </body>
+</html>
+
+<script src="script.js"></script>
