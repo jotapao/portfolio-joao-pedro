@@ -35,7 +35,7 @@
             color: var(--text-primary);
         }
 
-        /* --- TELA DE INICIALIZAÇÃO (PRELOADER) --- */
+        /* --- TELA DE INICIALIZAÇÃO (PRELOADER) - OTIMIZADO --- */
         #preloader {
             position: fixed;
             top: 0;
@@ -47,7 +47,7 @@
             justify-content: center;
             align-items: center;
             z-index: 1000;
-            transition: opacity 0.75s ease-out; /* Animação de fade-out */
+            transition: opacity 0.75s ease-out;
             opacity: 1;
         }
 
@@ -56,8 +56,9 @@
             pointer-events: none; /* Impede interação após desaparecer */
         }
 
-        #preloader img {
-            max-width: 300px;
+        #preloader svg {
+            width: 80%; /* Garante responsividade em telas menores */
+            max-width: 300px; /* Limita o tamanho máximo */
             animation: pulse-logo 2s infinite ease-in-out;
         }
         
@@ -143,17 +144,39 @@
 </head>
 <body class="w-full">
 
-    <!-- TELA DE INICIALIZAÇÃO -->
+    <!-- TELA DE INICIALIZAÇÃO COM SVG -->
     <div id="preloader">
-        <img src="images/logo site.png" alt="Logo JOTTADEV">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100">
+            <style>
+                .logo-text { font-family: 'Poppins', sans-serif; font-size: 50px; font-weight: 800; }
+                .tagline-text { font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 400; letter-spacing: 2px; }
+            </style>
+            <text x="50%" y="40%" dominant-baseline="middle" text-anchor="middle" class="logo-text" fill="white">
+                JOTTA<tspan fill="#00FF7F">DEV</tspan>
+            </text>
+            <text x="50%" y="70%" dominant-baseline="middle" text-anchor="middle" class="tagline-text" fill="#00FF7F">
+                SOLUÇÕES DIGITAIS
+            </text>
+        </svg>
     </div>
 
     <!-- Header -->
     <header id="header" class="fixed w-full top-0 z-50 transition-all duration-300 shadow-lg">
-        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+        <nav class="container mx-auto px-6 py-2 flex justify-between items-center">
             <a href="#home">
-                <!-- LOGO CORRIGIDA: altura definida para não esticar o header -->
-                <img src="images/logo site.png" alt="Logo JOTTADEV" class="h-12 w-auto">
+                <!-- LOGO DO HEADER COMO SVG -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-auto" viewBox="0 0 300 100">
+                    <style>
+                        .logo-text-header { font-family: 'Poppins', sans-serif; font-size: 50px; font-weight: 800; }
+                        .tagline-text-header { font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 400; letter-spacing: 2px; }
+                    </style>
+                    <text x="50%" y="40%" dominant-baseline="middle" text-anchor="middle" class="logo-text-header" fill="white">
+                        JOTTA<tspan fill="#00FF7F">DEV</tspan>
+                    </text>
+                    <text x="50%" y="70%" dominant-baseline="middle" text-anchor="middle" class="tagline-text-header" fill="#00FF7F">
+                        SOLUÇÕES DIGITAIS
+                    </text>
+                </svg>
             </a>
             <div class="hidden md:flex space-x-8 items-center">
                 <a href="#about" class="nav-link text-gray-300 hover:text-white transition">Quem Sou</a>
@@ -192,8 +215,7 @@
                 <div class="md:w-2/5 flex justify-center">
                     <div class="relative">
                         <div class="absolute inset-0 bg-jottadev-green rounded-full blur-2xl opacity-30"></div>
-                        <!-- FOTO DE PERFIL -->
-                        <img src="images/perfill.png" alt="Foto de perfil de João Pedro" class="relative rounded-full shadow-2xl mx-auto border-4 border-jottadev-green/50 w-64 h-64 md:w-80 md:h-80 object-cover">
+                        <img src="perfill.png" alt="Foto de perfil de João Pedro" class="relative rounded-full shadow-2xl mx-auto border-4 border-jottadev-green/50 w-64 h-64 md:w-80 md:h-80 object-cover">
                     </div>
                 </div>
             </div>
@@ -219,8 +241,20 @@
                         </ul>
                     </div>
                     <div class="md:w-2/5 flex justify-center mt-8 md:mt-0">
-                         <!-- LOGO JOTTADEV NA SEÇÃO SOBRE -->
-                         <img src="images/logo jottadev.png" alt="Logo JOTTADEV" class="relative rounded-lg w-full max-w-xs shadow-xl jottadev-green-shadow">
+                        <!-- LOGO DA SEÇÃO SOBRE COMO SVG -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="relative rounded-lg w-full max-w-xs shadow-xl jottadev-green-shadow" viewBox="0 0 300 100">
+                            <rect width="300" height="100" fill="black"/>
+                            <style>
+                                .logo-text-about { font-family: 'Poppins', sans-serif; font-size: 50px; font-weight: 800; }
+                                .tagline-text-about { font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 400; letter-spacing: 2px; }
+                            </style>
+                            <text x="50%" y="40%" dominant-baseline="middle" text-anchor="middle" class="logo-text-about" fill="white">
+                                JOTTA<tspan fill="#00FF7F">DEV</tspan>
+                            </text>
+                            <text x="50%" y="70%" dominant-baseline="middle" text-anchor="middle" class="tagline-text-about" fill="#00FF7F">
+                                SOLUÇÕES DIGITAIS
+                            </text>
+                        </svg>
                     </div>
                 </div>
             </div>
