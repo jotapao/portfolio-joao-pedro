@@ -21,14 +21,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-        /* --- NOVA PALETA DE CORES: PRETO, BRANCO E VERDE --- */
+        /* --- PALETA DE CORES: PRETO, BRANCO E VERDE --- */
         :root {
-            --bg-color: #000000; /* Preto */
-            --text-primary: #FFFFFF; /* Branco */
-            --text-secondary: #a0a0a0; /* Cinza claro */
-            --accent-green: #00FF7F; /* Verde Vibrante */
-            --bg-card: #111111; /* Preto um pouco mais claro para cards */
-            --border-color: #333333; /* Borda sutil */
+            --bg-color: #000000;
+            --text-primary: #FFFFFF;
+            --accent-green: #00FF7F;
+            --bg-card: #111111;
         }
         
         body {
@@ -37,13 +35,54 @@
             color: var(--text-primary);
         }
 
+        /* --- TELA DE INICIALIZAÇÃO (PRELOADER) --- */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.75s ease-out; /* Animação de fade-out */
+            opacity: 1;
+        }
+
+        #preloader.hidden {
+            opacity: 0;
+            pointer-events: none; /* Impede interação após desaparecer */
+        }
+
+        #preloader img {
+            max-width: 300px;
+            animation: pulse-logo 2s infinite ease-in-out;
+        }
+        
+        /* Oculta o conteúdo principal enquanto o preloader está ativo */
+        #main-content {
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s 0.5s, opacity 0.5s ease-in-out;
+        }
+
+        #main-content.loaded {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        @keyframes pulse-logo {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
         /* Classes de utilidade com as novas cores */
         .jottadev-green { color: var(--accent-green); }
         .bg-jottadev-green { background-color: var(--accent-green); }
         .border-jottadev-green { border-color: var(--accent-green); }
-        .jottadev-green-glow {
-            text-shadow: 0 0 10px rgba(0, 255, 127, 0.7);
-        }
         .jottadev-green-shadow {
             box-shadow: 0 0 20px rgba(0, 255, 127, 0.4);
         }
@@ -52,6 +91,26 @@
         #header {
             background-color: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(10px);
+        }
+
+        /* --- EFEITO HOVER NO MENU --- */
+        .nav-link {
+            position: relative;
+            padding-bottom: 5px;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--accent-green);
+            transition: width 0.3s ease-in-out;
+        }
+        .nav-link:hover::after {
+            width: 100%;
         }
 
         /* Section Title Style */
@@ -66,18 +125,11 @@
         }
 
         /* Typing Effect Cursor */
-        .typing-cursor {
-            background-color: var(--accent-green);
-            animation: blink 0.7s infinite;
-        }
-        @keyframes blink {
-            50% { opacity: 0; }
-        }
+        .typing-cursor { background-color: var(--accent-green); animation: blink 0.7s infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
 
         /* Carousel Navigation */
-        .swiper-pagination-bullet-active {
-            background: var(--accent-green) !important;
-        }
+        .swiper-pagination-bullet-active { background: var(--accent-green) !important; }
 
         /* Scroll Reveal Animation */
         .reveal {
@@ -86,32 +138,27 @@
             transition: opacity 0.8s, transform 0.8s;
             transition-timing-function: ease-out;
         }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body class="w-full">
 
+    <!-- TELA DE INICIALIZAÇÃO -->
+    <div id="preloader">
+        <img src="images/logo site.png" alt="Logo JOTTADEV">
+    </div>
+
     <!-- Header -->
     <header id="header" class="fixed w-full top-0 z-50 transition-all duration-300 shadow-lg">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#home" class="flex items-center gap-3">
-                <!-- JOTTADEV Logo com novas cores -->
-                <svg width="35" height="35" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M50 10 L90 50 L50 90 L10 50 Z" stroke="var(--accent-green)" stroke-width="10" fill="none" stroke-linejoin="round"/>
-                    <path d="M40 35 L60 50 L40 65" stroke="var(--text-primary)" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                 <div>
-                    <span class="font-bold text-xl text-white tracking-wider">JOTTADEV</span>
-                    <p class="text-xs jottadev-green -mt-1 tracking-widest">SOLUÇÕES DIGITAIS</p>
-                </div>
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#home">
+                <!-- LOGO CORRIGIDA: altura definida para não esticar o header -->
+                <img src="images/logo site.png" alt="Logo JOTTADEV" class="h-12 w-auto">
             </a>
             <div class="hidden md:flex space-x-8 items-center">
-                <a href="#about" class="text-gray-300 hover:jottadev-green transition">Quem Sou</a>
-                <a href="#services" class="text-gray-300 hover:jottadev-green transition">Serviços</a>
-                <a href="#portfolio" class="text-gray-300 hover:jottadev-green transition">Portfólio</a>
+                <a href="#about" class="nav-link text-gray-300 hover:text-white transition">Quem Sou</a>
+                <a href="#services" class="nav-link text-gray-300 hover:text-white transition">Serviços</a>
+                <a href="#portfolio" class="nav-link text-gray-300 hover:text-white transition">Portfólio</a>
                 <a href="#contact" class="bg-transparent border-2 border-jottadev-green text-jottadev-green px-5 py-2 rounded-md hover:bg-jottadev-green/20 transition duration-300">Contato</a>
             </div>
             <button id="mobile-menu-btn" class="md:hidden text-2xl jottadev-green"><i class="fas fa-bars"></i></button>
@@ -125,7 +172,7 @@
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
         <!-- I - Home Section -->
         <section id="home" class="min-h-screen flex items-center pt-24 md:pt-0 bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.95), rgba(0,0,0,0.95)), url('https://www.transparenttextures.com/patterns/cubes.png');">
             <div class="container mx-auto px-6 flex flex-col-reverse md:flex-row items-center gap-12">
@@ -145,7 +192,8 @@
                 <div class="md:w-2/5 flex justify-center">
                     <div class="relative">
                         <div class="absolute inset-0 bg-jottadev-green rounded-full blur-2xl opacity-30"></div>
-                        <img src="https://placehold.co/500x500/000000/00FF7F?text=JP" alt="Foto de perfil de João Pedro" class="relative rounded-full shadow-2xl mx-auto border-4 border-jottadev-green/50 w-64 h-64 md:w-80 md:h-80 object-cover">
+                        <!-- FOTO DE PERFIL -->
+                        <img src="images/perfill.png" alt="Foto de perfil de João Pedro" class="relative rounded-full shadow-2xl mx-auto border-4 border-jottadev-green/50 w-64 h-64 md:w-80 md:h-80 object-cover">
                     </div>
                 </div>
             </div>
@@ -171,10 +219,8 @@
                         </ul>
                     </div>
                     <div class="md:w-2/5 flex justify-center mt-8 md:mt-0">
-                         <div class="relative w-full max-w-xs group">
-                             <div class="absolute -inset-0.5 bg-gradient-to-r from-green-500 to-emerald-600 rounded-lg blur opacity-50 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-                             <img src="https://placehold.co/500x600/111111/FFFFFF?text=JOTTADEV" alt="Imagem profissional de João Pedro" class="relative rounded-lg shadow-xl w-full">
-                         </div>
+                         <!-- LOGO JOTTADEV NA SEÇÃO SOBRE -->
+                         <img src="images/logo jottadev.png" alt="Logo JOTTADEV" class="relative rounded-lg w-full max-w-xs shadow-xl jottadev-green-shadow">
                     </div>
                 </div>
             </div>
@@ -215,12 +261,9 @@
                 <h2 class="section-title text-3xl font-bold text-center text-white mb-16 reveal">Projetos Recentes</h2>
                 <div class="swiper reveal" id="portfolio-swiper">
                     <div class="swiper-wrapper">
-                        <!-- Slides -->
                         <div class="swiper-slide group"><div class="bg-zinc-900 rounded-lg shadow-lg overflow-hidden"><img src="https://placehold.co/600x400/000000/00FF7F?text=Projeto+Alpha" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" alt="Projeto Alpha"><div class="p-4"><p class="font-semibold text-white">E-commerce de Moda</p><p class="text-sm jottadev-green">Web Design</p></div></div></div>
                         <div class="swiper-slide group"><div class="bg-zinc-900 rounded-lg shadow-lg overflow-hidden"><img src="https://placehold.co/600x400/000000/FFFFFF?text=Projeto+Beta" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" alt="Projeto Beta"><div class="p-4"><p class="font-semibold text-white">Site Institucional de Advocacia</p><p class="text-sm jottadev-green">Identidade Visual</p></div></div></div>
                         <div class="swiper-slide group"><div class="bg-zinc-900 rounded-lg shadow-lg overflow-hidden"><img src="https://placehold.co/600x400/000000/00FF7F?text=Projeto+Gama" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" alt="Projeto Gama"><div class="p-4"><p class="font-semibold text-white">Sistema de Gestão Escolar</p><p class="text-sm jottadev-green">Sistema Web</p></div></div></div>
-                        <div class="swiper-slide group"><div class="bg-zinc-900 rounded-lg shadow-lg overflow-hidden"><img src="https://placehold.co/600x400/000000/FFFFFF?text=Projeto+Delta" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" alt="Projeto Delta"><div class="p-4"><p class="font-semibold text-white">Landing Page para Evento</p><p class="text-sm jottadev-green">Marketing Digital</p></div></div></div>
-                        <div class="swiper-slide group"><div class="bg-zinc-900 rounded-lg shadow-lg overflow-hidden"><img src="https://placehold.co/600x400/000000/00FF7F?text=Projeto+Epsilon" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" alt="Projeto Epsilon"><div class="p-4"><p class="font-semibold text-white">Plataforma de Cursos Online</p><p class="text-sm jottadev-green">E-learning</p></div></div></div>
                     </div>
                 </div>
             </div>
@@ -234,7 +277,6 @@
                     <div class="swiper-wrapper">
                         <div class="swiper-slide"><div class="bg-zinc-900 p-8 rounded-lg text-center"><i class="fas fa-quote-left text-3xl jottadev-green mb-4"></i><p class="text-gray-400 italic">"O João transformou nosso site. O resultado foi além do esperado, com um design incrível e muito mais vendas!"</p><img src="https://placehold.co/80x80/00FF7F/000000?text=A" alt="Cliente Ana" class="w-16 h-16 rounded-full mx-auto mt-6 mb-2 border-2 border-jottadev-green/50"><p class="font-bold text-white">Ana Silva</p><p class="text-sm jottadev-green">CEO, ModaStore</p></div></div>
                         <div class="swiper-slide"><div class="bg-zinc-900 p-8 rounded-lg text-center"><i class="fas fa-quote-left text-3xl jottadev-green mb-4"></i><p class="text-gray-400 italic">"Profissionalismo e competência definem a JOTTADEV. O sistema que desenvolveram otimizou toda a nossa operação."</p><img src="https://placehold.co/80x80/00FF7F/000000?text=M" alt="Cliente Marcos" class="w-16 h-16 rounded-full mx-auto mt-6 mb-2 border-2 border-jottadev-green/50"><p class="font-bold text-white">Marcos Lins</p><p class="text-sm jottadev-green">Diretor, Educar+</p></div></div>
-                        <div class="swiper-slide"><div class="bg-zinc-900 p-8 rounded-lg text-center"><i class="fas fa-quote-left text-3xl jottadev-green mb-4"></i><p class="text-gray-400 italic">"Desde o primeiro contato até a entrega final, a comunicação foi excelente e o projeto foi entregue no prazo."</p><img src="https://placehold.co/80x80/00FF7F/000000?text=C" alt="Cliente Carla" class="w-16 h-16 rounded-full mx-auto mt-6 mb-2 border-2 border-jottadev-green/50"><p class="font-bold text-white">Carla Faria</p><p class="text-sm jottadev-green">Advogada, Faria & Associados</p></div></div>
                     </div>
                      <div class="swiper-pagination mt-8 relative"></div>
                 </div>
@@ -257,7 +299,6 @@
             <div class="container mx-auto px-6 reveal">
                 <h2 class="section-title text-3xl font-bold text-center text-white mb-16">Contato</h2>
                 <div class="bg-zinc-900 rounded-lg shadow-xl grid md:grid-cols-2">
-                    <!-- ÁREA DO BOTÃO WHATSAPP -->
                     <div class="p-8 md:p-12 flex flex-col justify-center items-center text-center">
                         <h3 class="text-2xl font-bold text-white mb-4">Fale Comigo Diretamente</h3>
                         <p class="text-gray-400 mb-8">Clique no botão abaixo para iniciar uma conversa no WhatsApp. Estou pronto para te ajudar a transformar sua ideia em realidade!</p>
@@ -266,14 +307,12 @@
                             Enviar Mensagem no WhatsApp
                         </a>
                     </div>
-                    <!-- ÁREA DO MAPA -->
                     <div class="rounded-b-lg md:rounded-r-lg md:rounded-b-none overflow-hidden min-h-[400px]">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d122140.22228892482!2d-49.35824962283057!3d-16.69599542630507!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935ef6bd58d80867%3A0x4a43a2c53a06703c!2sGoiania%2C%20Goi%C3%A1s!5e0!3m2!1spt-BR!2sbr!4v1718228318288!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0; filter: grayscale(1) invert(0.9) contrast(0.9);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>
         </section>
-
     </main>
 
     <!-- IX - Footer -->
@@ -289,8 +328,5 @@
             <p class="text-xs">Criado com <i class="fas fa-heart text-red-500"></i> por João Pedro.</p>
         </div>
     </footer>
-    
-    <!-- É necessário manter o script.js linkado -->
-    <script src="script.js"></script>
 </body>
 <script src="script.js"></script>

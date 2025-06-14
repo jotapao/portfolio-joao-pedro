@@ -1,95 +1,85 @@
     document.addEventListener('DOMContentLoaded', () => {
+        
+        // --- LÓGICA DO PRELOADER CORRIGIDA ---
+        const preloader = document.getElementById('preloader');
+        const mainContent = document.getElementById('main-content');
+
+        setTimeout(() => {
+            preloader.classList.add('hidden');
+            mainContent.classList.add('loaded');
+        }, 3000); // 3 segundos de exibição
+
         // --- Mobile Menu Toggle ---
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-
-        // --- Reusable Typing Effect Function ---
-        function initTyping(elementId, roles, typeSpeed, deleteSpeed, delay) {
-            const typingElement = document.getElementById(elementId);
-            if (!typingElement) return;
-            
-            typingElement.innerHTML = '<span class="typing-text"></span><span class="typing-cursor"></span>';
-            const typingText = typingElement.querySelector('.typing-text');
-            
-            let roleIndex = 0, charIndex = 0, isDeleting = false;
-
-            function type() {
-                const currentRole = roles[roleIndex];
-                const speed = isDeleting ? deleteSpeed : typeSpeed;
-                
-                typingText.textContent = currentRole.substring(10, charIndex);
-                
-                if (!isDeleting) {
-                    charIndex++;
-                } else {
-                    charIndex--;
-                }
-
-                if (!isDeleting && charIndex === currentRole.length + 1) {
-                    isDeleting = true;
-                    setTimeout(type, delay);
-                    return;
-                } else if (isDeleting && charIndex === -1) {
-                    isDeleting = false;
-                    roleIndex = (roleIndex + 1) % roles.length;
-                }
-                
-                setTimeout(type, speed);
-            }
-            type();
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
         }
 
-        // --- Initialize Typing Animations ---
-        initTyping(
-            'home-description-typing',
-            ["Sou desenvolvedor e CEO da JOTTADEV, uma agência focada em transformar ideias em soluções digitais de alta performance que impulsionam o crescimento de negócios."],
-            40, // Typing speed
-            20,  // Deleting speed
-            5000 // Delay before starting over (if more than one text)
-        );
+        // --- EFEITO DE DIGITAÇÃO CORRIGIDO ---
+        const typingElement = document.querySelector("#home-description-typing .typing-text");
+        if(typingElement) {
+            const text = "Idealizador e CEO da JOTTADEV, uma agência focada em transformar ideias em soluções digitais de alta performance que impulsionam o crescimento de negócios.";
+            let index = 0;
+            typingElement.innerHTML = ''; // Limpa o conteúdo antes de começar
+            
+            function type() {
+                if (index < text.length) {
+                    // Define o conteúdo usando substring para evitar duplicação
+                    typingElement.textContent = text.substring(0, index + 1);
+                    index++;
+                    setTimeout(type, 40); // Velocidade de digitação
+                }
+            }
+            // Inicia a animação um pouco depois que o site carrega
+            setTimeout(type, 3500); 
+        }
         
+        // --- Carrossel de Portfolio ---
+        if (document.getElementById('portfolio-swiper')) {
+            new Swiper('#portfolio-swiper', {
+                loop: true,
+                slidesPerView: 1,
+                spaceBetween: 30,
+                autoplay: { delay: 3000, disableOnInteraction: false },
+                breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
+            });
+        }
 
-        // --- Portfolio Carousel ---
-        new Swiper('#portfolio-swiper', {
-            loop: true,
-            slidesPerView: 1,
-            spaceBetween: 30,
-            autoplay: { delay: 3000, disableOnInteraction: false },
-            // Navigation buttons removed as per request
-            breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
-        });
-
-        // --- Testimonials Carousel ---
-        new Swiper('#testimonials-swiper', {
-            loop: true,
-            slidesPerView: 1,
-            spaceBetween: 30,
-            autoplay: { delay: 5000, disableOnInteraction: false },
-            pagination: { el: '.swiper-pagination', clickable: true },
-        });
+        // --- Carrossel de Depoimentos ---
+        if (document.getElementById('testimonials-swiper')) {
+            new Swiper('#testimonials-swiper', {
+                loop: true,
+                slidesPerView: 1,
+                spaceBetween: 30,
+                autoplay: { delay: 5000, disableOnInteraction: false },
+                pagination: { el: '.swiper-pagination', clickable: true },
+            });
+        }
         
-        // --- Smooth Scroll & Close Mobile Menu ---
+        // --- Rolagem Suave e Fechar Menu Mobile ---
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-                if (!mobileMenu.classList.contains('hidden')) mobileMenu.classList.add('hidden');
+                const targetElement = document.querySelector(this.getAttribute('href'));
+                if (targetElement) {
+                   targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
             });
         });
         
-        // --- Scroll Reveal Animation ---
+        // --- Animação de Revelar ao Rolar ---
         const revealElements = document.querySelectorAll('.reveal');
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    // Optional: unobserve after revealing
-                    // revealObserver.unobserve(entry.target); 
                 }
             });
         }, { threshold: 0.1 });
 
         revealElements.forEach(el => revealObserver.observe(el));
-
     });
