@@ -1,4 +1,4 @@
- // --- FUNÇÃO PARA INICIALIZAR TODOS OS SCRIPTS ---
+  // --- FUNÇÃO PARA INICIALIZAR TODOS OS SCRIPTS ---
         function initializeScripts() {
             // --- Mobile Menu Toggle ---
             const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -24,13 +24,18 @@
                 type(); // Inicia a animação
             }
             
-            // --- Carrossel de Portfolio ---
+            // --- CARROSSEL DE PORTFOLIO SEM BOTÕES DE NAVEGAÇÃO ---
             if (document.getElementById('portfolio-swiper')) {
                 new Swiper('#portfolio-swiper', {
                     loop: true,
                     slidesPerView: 1,
                     spaceBetween: 30,
-                    autoplay: { delay: 3000, disableOnInteraction: false },
+                    autoplay: { 
+                        delay: 4000, 
+                        disableOnInteraction: false, // Autoplay recomeça após interação
+                        pauseOnMouseEnter: true, // Pausa ao passar o mouse
+                    },
+                    // Objeto de navegação removido para ocultar as setas
                     breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
                 });
             }
