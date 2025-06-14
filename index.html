@@ -155,7 +155,8 @@
 
     <!-- TELA DE INICIALIZAÇÃO COM SVG -->
     <div id="preloader">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" aria-labelledby="logoTitle" role="img">
+            <title id="logoTitle">Logo da JOTTADEV</title>
             <style>
                 .logo-text { font-family: 'Poppins', sans-serif; font-size: 50px; font-weight: 800; }
                 .tagline-text { font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 400; letter-spacing: 2px; }
@@ -171,10 +172,11 @@
 
     <!-- Header -->
     <header id="header" class="fixed w-full top-0 z-50 transition-all duration-300 shadow-lg">
-        <nav class="container mx-auto px-6 py-2 flex justify-between items-center">
+        <nav class="container mx-auto px-4 sm:px-6 py-2 flex justify-between items-center">
             <a href="#home">
-                <!-- LOGO DO HEADER COMO SVG -->
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-auto" viewBox="0 0 300 100">
+                <!-- LOGO DO HEADER COMO SVG OTIMIZADO -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-auto" viewBox="0 0 300 100" aria-labelledby="headerLogoTitle" role="img">
+                     <title id="headerLogoTitle">Logo da JOTTADEV</title>
                     <style>
                         .logo-text-header { font-family: 'Poppins', sans-serif; font-size: 50px; font-weight: 800; }
                         .tagline-text-header { font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 400; letter-spacing: 2px; }
@@ -207,7 +209,7 @@
     <main id="main-content">
         <!-- I - Home Section -->
         <section id="home" class="min-h-screen flex items-center pt-24 md:pt-0 bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.95), rgba(0,0,0,0.95)), url('https://www.transparenttextures.com/patterns/cubes.png');">
-            <div class="container mx-auto px-6 flex flex-col-reverse md:flex-row items-center gap-12">
+            <div class="container mx-auto px-4 sm:px-6 flex flex-col-reverse md:flex-row items-center gap-12">
                 <div class="md:w-3/5 text-center md:text-left">
                     <p class="text-lg jottadev-green font-semibold mb-2">Olá, meu nome é</p>
                     <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight">João Pedro.</h1>
@@ -224,7 +226,7 @@
                 <div class="md:w-2/5 flex justify-center">
                     <div class="relative">
                         <div class="absolute inset-0 bg-jottadev-green rounded-full blur-2xl opacity-30"></div>
-                        <img src="images/perfill.png" alt="Foto de perfil de João Pedro" class="relative rounded-full shadow-2xl mx-auto border-4 border-jottadev-green/50 w-64 h-64 md:w-80 md:h-80 object-cover">
+                        <img src="perfill.png" alt="Foto de perfil de João Pedro" class="relative rounded-full shadow-2xl mx-auto border-4 border-jottadev-green/50 w-64 h-64 md:w-80 md:h-80 object-cover">
                     </div>
                 </div>
             </div>
@@ -232,7 +234,7 @@
 
         <!-- II - About Section -->
         <section id="about" class="py-24">
-            <div class="container mx-auto px-6">
+            <div class="container mx-auto px-4 sm:px-6">
                 <h2 class="section-title text-center text-3xl font-bold text-white mb-16 reveal">Quem Sou</h2>
                 <div class="flex flex-col md:flex-row items-center gap-12 reveal">
                     <div class="md:w-3/5">
@@ -271,7 +273,7 @@
 
         <!-- III - Services Section -->
         <section id="services" class="py-24 bg-black/40">
-            <div class="container mx-auto px-6 text-center">
+            <div class="container mx-auto px-4 sm:px-6 text-center">
                 <h2 class="section-title text-3xl font-bold text-white mb-16 reveal">Serviços Sob Medida</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                     <div class="bg-zinc-900 p-8 rounded-lg border border-zinc-800 hover:border-jottadev-green hover:-translate-y-2 transition-all duration-300 reveal">
@@ -300,7 +302,7 @@
 
         <!-- IV - Portfolio Section -->
         <section id="portfolio" class="py-24">
-            <div class="container mx-auto px-6">
+            <div class="container mx-auto px-4 sm:px-6">
                 <h2 class="section-title text-3xl font-bold text-center text-white mb-16 reveal">Projetos Recentes</h2>
                 <!-- SWIPER CONTAINER ATUALIZADO SEM BOTÕES -->
                 <div class="swiper reveal" id="portfolio-swiper">
@@ -308,107 +310,37 @@
                         <!-- CARD DE PROJETO ATUALIZADO -->
                         <div class="swiper-slide project-card group">
                             <div class="bg-zinc-900 rounded-lg shadow-lg overflow-hidden relative">
-                                <img src="images/ZINGEN.png" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300" alt="Projeto Alpha">
+                                <img src="https://placehold.co/600x400/000000/00FF7F?text=Projeto+Alpha" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300" alt="Projeto Alpha">
                                 <!-- Overlay com botão -->
                                 <div class="overlay absolute inset-0 bg-black/70 flex items-center justify-center">
                                     <a href="#" class="border-2 border-jottadev-green text-jottadev-green px-6 py-2 rounded-md hover:bg-jottadev-green hover:text-black font-semibold transition duration-300">Ver Projeto</a>
                                 </div>
                                 <div class="p-4">
-                                    <p class="font-semibold text-white">Landing page - App de Karaoke</p>
-                                    <p class="text-sm jottadev-green">Identidade visual</p>
-                                </div>
-                            </div>
-                        </div>
-
-                         <div class="swiper-slide project-card group">
-                            <div class="bg-zinc-900 rounded-lg shadow-lg overflow-hidden relative">
-                                <img src="images/NUMBER.png" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300" alt="Projeto Alpha">
-                                <!-- Overlay com botão -->
-                                <div class="overlay absolute inset-0 bg-black/70 flex items-center justify-center">
-                                    <a href="#" class="border-2 border-jottadev-green text-jottadev-green px-6 py-2 rounded-md hover:bg-jottadev-green hover:text-black font-semibold transition duration-300">Ver Projeto</a>
-                                </div>
-                                <div class="p-4">
-                                    <p class="font-semibold text-white">Numbers - Sorteador de Números</p>
-                                    <p class="text-sm jottadev-green">Sistema Web</p>
-                                </div>
-                            </div>
-                        </div>
-
-                         <div class="swiper-slide project-card group">
-                            <div class="bg-zinc-900 rounded-lg shadow-lg overflow-hidden relative">
-                                <img src="images/ZINGEN.png" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300" alt="Projeto Alpha">
-                                <!-- Overlay com botão -->
-                                <div class="overlay absolute inset-0 bg-black/70 flex items-center justify-center">
-                                    <a href="#" class="border-2 border-jottadev-green text-jottadev-green px-6 py-2 rounded-md hover:bg-jottadev-green hover:text-black font-semibold transition duration-300">Ver Projeto</a>
-                                </div>
-                                <div class="p-4">
-                                    <p class="font-semibold text-white">Landing page - App de Karaoke</p>
-                                    <p class="text-sm jottadev-green">Identidade visual</p>
-                                </div>
-                            </div>
-                        </div>
-
-                         <div class="swiper-slide project-card group">
-                            <div class="bg-zinc-900 rounded-lg shadow-lg overflow-hidden relative">
-                                <img src="images/agendamento nails.jpeg" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300" alt="Projeto Alpha">
-                                <!-- Overlay com botão -->
-                                <div class="overlay absolute inset-0 bg-black/70 flex items-center justify-center">
-                                    <a href="#" class="border-2 border-jottadev-green text-jottadev-green px-6 py-2 rounded-md hover:bg-jottadev-green hover:text-black font-semibold transition duration-300">Ver Projeto</a>
-                                </div>
-                                <div class="p-4">
-                                    <p class="font-semibold text-white">Landing page - App de Karaoke</p>
-                                    <p class="text-sm jottadev-green">Identidade visual</p>
-                                </div>
-                            </div>
-                        </div>
-
-                         <div class="swiper-slide project-card group">
-                            <div class="bg-zinc-900 rounded-lg shadow-lg overflow-hidden relative">
-                                <img src="images/ZINGEN.png" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300" alt="Projeto Alpha">
-                                <!-- Overlay com botão -->
-                                <div class="overlay absolute inset-0 bg-black/70 flex items-center justify-center">
-                                    <a href="#" class="border-2 border-jottadev-green text-jottadev-green px-6 py-2 rounded-md hover:bg-jottadev-green hover:text-black font-semibold transition duration-300">Ver Projeto</a>
-                                </div>
-                                <div class="p-4">
-                                    <p class="font-semibold text-white">Landing page - App de Karaoke</p>
-                                    <p class="text-sm jottadev-green">Identidade visual</p>
-                                </div>
-                            </div>
-                        </div>
-
-                         <div class="swiper-slide project-card group">
-                            <div class="bg-zinc-900 rounded-lg shadow-lg overflow-hidden relative">
-                                <img src="images/ZINGEN.png" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300" alt="Projeto Alpha">
-                                <!-- Overlay com botão -->
-                                <div class="overlay absolute inset-0 bg-black/70 flex items-center justify-center">
-                                    <a href="#" class="border-2 border-jottadev-green text-jottadev-green px-6 py-2 rounded-md hover:bg-jottadev-green hover:text-black font-semibold transition duration-300">Ver Projeto</a>
-                                </div>
-                                <div class="p-4">
-                                    <p class="font-semibold text-white">Landing page - App de Karaoke</p>
-                                    <p class="text-sm jottadev-green">Identidade visual</p>
+                                    <p class="font-semibold text-white">E-commerce de Moda</p>
+                                    <p class="text-sm jottadev-green">Web Design</p>
                                 </div>
                             </div>
                         </div>
                         <div class="swiper-slide project-card group">
                              <div class="bg-zinc-900 rounded-lg shadow-lg overflow-hidden relative">
-                                <img src="images/refund.png" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300" alt="Projeto Beta">
+                                <img src="https://placehold.co/600x400/000000/FFFFFF?text=Projeto+Beta" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300" alt="Projeto Beta">
                                 <div class="overlay absolute inset-0 bg-black/70 flex items-center justify-center">
                                      <a href="#" class="border-2 border-jottadev-green text-jottadev-green px-6 py-2 rounded-md hover:bg-jottadev-green hover:text-black font-semibold transition duration-300">Ver Projeto</a>
                                 </div>
                                 <div class="p-4">
-                                    <p class="font-semibold text-white">Refund - Cálculo de reembolso</p>
-                                    <p class="text-sm jottadev-green">Sistema Web</p>
+                                    <p class="font-semibold text-white">Site Institucional de Advocacia</p>
+                                    <p class="text-sm jottadev-green">Identidade Visual</p>
                                 </div>
                             </div>
                         </div>
                          <div class="swiper-slide project-card group">
                              <div class="bg-zinc-900 rounded-lg shadow-lg overflow-hidden relative">
-                                <img src="images/escola.png" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300" alt="Projeto Gama">
+                                <img src="https://placehold.co/600x400/000000/00FF7F?text=Projeto+Gama" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300" alt="Projeto Gama">
                                 <div class="overlay absolute inset-0 bg-black/70 flex items-center justify-center">
                                      <a href="#" class="border-2 border-jottadev-green text-jottadev-green px-6 py-2 rounded-md hover:bg-jottadev-green hover:text-black font-semibold transition duration-300">Ver Projeto</a>
                                 </div>
                                 <div class="p-4">
-                                    <p class="font-semibold text-white">Sistema de Gestão e matricula Escolar</p>
+                                    <p class="font-semibold text-white">Sistema de Gestão Escolar</p>
                                     <p class="text-sm jottadev-green">Sistema Web</p>
                                 </div>
                             </div>
@@ -420,7 +352,7 @@
 
         <!-- V - Testimonials Section -->
         <section id="testimonials" class="py-24 bg-black/40">
-            <div class="container mx-auto px-6 reveal">
+            <div class="container mx-auto px-4 sm:px-6 reveal">
                 <h2 class="section-title text-3xl font-bold text-center text-white mb-16">O que meus Clientes Dizem</h2>
                 <div class="swiper" id="testimonials-swiper">
                     <div class="swiper-wrapper">
@@ -434,10 +366,11 @@
 
         <!-- VI - Lead Capture Section -->
         <section id="lead-capture" class="py-24 text-center">
-            <div class="container mx-auto px-6 reveal">
-                <h2 class="text-4xl font-bold text-white">Vamos Construir Algo Incrível Juntos?</h2>
+            <div class="container mx-auto px-4 sm:px-6 reveal">
+                <h2 class="text-3xl sm:text-4xl font-bold text-white">Vamos Construir Algo Incrível Juntos?</h2>
                 <p class="mt-4 mb-8 max-w-2xl mx-auto text-gray-400">Estou sempre em busca de novos desafios. Se você tem uma ideia, um projeto ou precisa de uma solução digital, entre em contato. Vamos tomar um café e conversar!</p>
-                <a href="#contact" class="bg-jottadev-green text-black font-bold px-10 py-4 rounded-md text-lg hover:bg-green-400 transition duration-300 shadow-lg jottadev-green-shadow">
+                <!-- BOTÃO CORRIGIDO -->
+                <a href="#contact" class="bg-jottadev-green text-black font-bold px-8 sm:px-10 py-4 rounded-md text-base sm:text-lg hover:bg-green-400 transition duration-300 shadow-lg jottadev-green-shadow inline-block">
                     Me Envie uma Mensagem
                 </a>
             </div>
@@ -445,13 +378,13 @@
         
         <!-- VII & VIII - Contact & Location Merged Section -->
         <section id="contact" class="py-24 bg-black/40">
-            <div class="container mx-auto px-6 reveal">
+            <div class="container mx-auto px-4 sm:px-6 reveal">
                 <h2 class="section-title text-3xl font-bold text-center text-white mb-16">Contato</h2>
                 <div class="bg-zinc-900 rounded-lg shadow-xl grid md:grid-cols-2">
                     <div class="p-8 md:p-12 flex flex-col justify-center items-center text-center">
                         <h3 class="text-2xl font-bold text-white mb-4">Fale Comigo Diretamente</h3>
                         <p class="text-gray-400 mb-8">Clique no botão abaixo para iniciar uma conversa no WhatsApp. Estou pronto para te ajudar a transformar sua ideia em realidade!</p>
-                        <a href="https://wa.me/5562981658672?text=Ol%C3%A1%2C%20gostaria%20de%20or%C3%A7ar%20uma%20solu%C3%A7%C3%A3o%20digital%20para%20o%20meu%20neg%C3%B3cio" target="_blank" class="w-full max-w-sm bg-jottadev-green text-black font-bold py-4 px-6 rounded-md hover:bg-green-400 transition-all duration-300 flex items-center justify-center gap-3 text-lg jottadev-green-shadow hover:scale-105">
+                        <a href="https://wa.me/SEUNUMERO" target="_blank" class="w-full max-w-sm bg-jottadev-green text-black font-bold py-4 px-6 rounded-md hover:bg-green-400 transition-all duration-300 flex items-center justify-center gap-3 text-lg jottadev-green-shadow hover:scale-105">
                             <i class="fab fa-whatsapp text-2xl"></i>
                             Enviar Mensagem no WhatsApp
                         </a>
@@ -466,7 +399,7 @@
 
     <!-- IX - Footer -->
     <footer class="bg-zinc-900/50 text-gray-400 py-8">
-        <div class="container mx-auto px-6 text-center">
+        <div class="container mx-auto px-4 sm:px-6 text-center">
             <div class="flex justify-center space-x-6 mb-4">
                 <a href="#" target="_blank" class="text-2xl hover:text-jottadev-green hover:-translate-y-1 transition-all"><i class="fab fa-linkedin"></i></a>
                 <a href="#" target="_blank" class="text-2xl hover:text-jottadev-green hover:-translate-y-1 transition-all"><i class="fab fa-github"></i></a>
@@ -479,4 +412,5 @@
     </footer>
 
 </body>
+</html>
 <script src="script.js"></script>

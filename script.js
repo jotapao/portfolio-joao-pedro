@@ -1,4 +1,4 @@
-  // --- FUNÇÃO PARA INICIALIZAR TODOS OS SCRIPTS ---
+        // --- FUNÇÃO PARA INICIALIZAR TODOS OS SCRIPTS ---
         function initializeScripts() {
             // --- Mobile Menu Toggle ---
             const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -36,7 +36,7 @@
                         pauseOnMouseEnter: true, // Pausa ao passar o mouse
                     },
                     // Objeto de navegação removido para ocultar as setas
-                    breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
+                    breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
                 });
             }
 
